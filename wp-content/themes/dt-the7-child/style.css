@@ -1,0 +1,96 @@
+/*
+Theme Name: the7dtchild
+Author: Dream-Theme
+Author URI: http://dream-theme.com/
+Description: The7 is perfectly scalable, performance and SEO optimized, responsive, retina ready multipurpose WordPress theme. It will fit every site – big or small. From huge corporate portals to studio or personal sites – The7 will become a great foundation for your next project!
+Version: 1.0.0
+License: This WordPress theme is comprised of two parts: (1) The PHP code and integrated HTML are licensed under the GPL license as is WordPress itself.  You will find a copy of the license text in the same directory as this text file. Or you can read it here: http://wordpress.org/about/gpl/ (2) All other parts of the theme including, but not limited to the CSS code, images, and design are licensed according to the license purchased. Read about licensing details here: http://themeforest.net/licenses/regular_extended
+Template: dt-the7
+*/
+
+.txt_block_001{font-size:20px; font-weight:500; color:#333;}
+.txt_block_001_jp{font-family:Noto Sans JP !important; font-size:20px; font-weight:600; color:#333;}
+.ff_jp{font-family:Noto Sans JP !important;}
+.ff_jp_op1{font-family:Noto Sans JP !important; font-weight:600; letter-spacing:-0.05em;}
+
+.ff_cn_sc{font-family:Noto Sans SC!important; font-weight:400 !important;}
+
+@media screen and (max-width: 776px) {
+	.txt_block_001{font-size:16px !important; letter-spacing:-0.03em;}
+}
+
+ol.breadcrumbs li a{pointer-events: none !important; cursor: default !important;}
+
+/*.main-nav > li > a .menu-text {font-weight:500 !important;}*/
+
+/* ko 
+.menu-item-3876 a span.menu-text{font-size:13px !important;}
+.menu-item-3876 span.menu-text{padding-left:10px; padding-right:10px; border:#e9e9e9 1px solid;}
+.menu-item-3876 i{display:none !important;}
+.menu-item-3876 i.next-level-button{display:block !important}
+*/
+
+
+.lang-item-20 a{margin:0 !important; padding: 8px 8px 8px 8px !important;}
+.lang-item-23 a{margin:0 !important; padding: 8px 8px 8px 8px !important;}
+.lang-item-27 a{margin:0 !important; padding: 8px 8px 8px 8px !important;}
+.lang-item-31 a{margin:0 !important; padding: 8px 8px 8px 8px !important;}
+
+@media screen and (min-width: 992px) {
+	.mobile_only{display:none !important;}
+}
+
+.menu-item-3660 a{padding-right:15px !important;}
+.menu-item-4881 a{padding-right:15px !important;}
+.menu-item-4883 a{padding-right:15px !important;}
+.menu-item-4882 a{padding-right:15px !important;}
+
+
+/* cn 
+.menu-item-5934 a span.menu-text{font-family:Noto Sans SC!important;}
+
+.main-nav li.menu-item-5893 a .menu-text {font: normal 500 16px / 18px "Noto Sans SC", Helvetica, Arial, Verdana, sans-serif; text-transform: none;}
+*/
+
+/* en 
+.menu-item-4866 a span.menu-text{font-size:13px !important;}
+.menu-item-4866 span.menu-text{padding-left:10px; padding-right:10px; border:#e9e9e9 1px solid;}
+.menu-item-4866 i{display:none !important;}
+.menu-item-4866 i.next-level-button{display:block !important}
+*/
+
+/* jp 
+.menu-item-4867 a span.menu-text{font-size:13px !important;}
+.menu-item-4867 span.menu-text{padding-left:10px; padding-right:10px; border:#e9e9e9 1px solid;}
+.menu-item-4867 i{display:none !important;}
+.menu-item-4867 i.next-level-button{display:block !important}
+*/
+
+li.lang-item span.menu-item-text span.menu-text{padding-left:0; padding-right:0; border:none !important; font-size:12px !important;}
+.wf-container-bottom{font-size:13px !important; font-weight:400;}
+
+.dt-contact-form textarea{resize:none !important;}
+
+.txt_al_l{text-align:left !important}
+.txt_al_jus{text-align:justify !important;}
+
+
+.disp_none{display:none !important;}
+
+
+element.style {
+}
+
+#bottom-bar .wf-container-bottom {
+    flex-flow: column wrap;
+    justify-content: center;
+}
+
+.footer_font_cus{color:#fff; font-size:13px; font-weight:400;}
+.footer_font_cus img{width:150px;}
+.footer_font_cus_jp{font-family:Noto Sans JP !important; color:#fff; font-size:13px; font-weight:400;}
+.footer_font_cus_cn{font-family:Noto Sans SC !important; color:#fff; font-size:13px; font-weight:400;}
+
+
+
+
