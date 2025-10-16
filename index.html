@@ -4,14 +4,39 @@
 	<meta charset="utf-8">
 	<title>KNP 특허법률사무소</title>
 		<meta http-equiv="refresh" content="0; url=language/ko/">
-		<link rel="canonical" href="language/ko/">
+		<link rel="canonical" href="https://knp-law.co.kr/language/ko/">
 		<meta name="robots" content="noindex">
 		<script>
-			// Redirect visitors to the authoritative WordPress site even if meta refresh is ignored.
-			window.location.replace('language/ko/');
+			(function () {
+				var host = window.location.hostname || '';
+				var redirectTarget = host.endsWith('github.io')
+					? 'https://knp-law.co.kr/language/ko/'
+					: 'language/ko/';
+
+				window.__redirectTarget = redirectTarget;
+
+				var metaRefresh = document.querySelector('meta[http-equiv="refresh"]');
+				if (metaRefresh) {
+					metaRefresh.setAttribute('content', '0; url=' + redirectTarget);
+				}
+
+				// Redirect visitors to the appropriate target (GitHub Pages -> production site, local -> static copy).
+				window.location.replace(redirectTarget);
+			})();
 		</script>
 	</head>
 	<body>
-		<p>Redirecting to the <a href="language/ko/">KNP 특허법률사무소</a> homepage…</p>
+		<p>Redirecting to the <a id="redirect-link" href="language/ko/">KNP 특허법률사무소</a> homepage…</p>
+		<script>
+			(function () {
+				var link = document.getElementById('redirect-link');
+				if (!link) {
+					return;
+				}
+
+				var target = window.__redirectTarget || 'language/ko/';
+				link.href = target;
+			})();
+		</script>
 	</body>
 </html>

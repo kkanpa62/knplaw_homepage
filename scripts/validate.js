@@ -27,14 +27,17 @@ try {
 
 	const hasMetaRefreshRedirect =
 		/<meta\s+http-equiv=["']refresh["']\s+content=["'][^"']*url=\/language\/ko\/?/i.test(indexHtml) ||
-		/<meta\s+http-equiv=["']refresh["']\s+content=["'][^"']*url=language\/ko\/?/i.test(indexHtml);
+		/<meta\s+http-equiv=["']refresh["']\s+content=["'][^"']*url=language\/ko\/?/i.test(indexHtml) ||
+		/<meta\s+http-equiv=["']refresh["']\s+content=["'][^"']*url=https?:\/\/knp-law\.co\.kr\/language\/ko\/?/i.test(indexHtml);
 	if (!hasMetaRefreshRedirect) {
 		problems.push('index.html is missing the meta refresh redirect to language/ko/.');
 	}
 
 	const hasJsRedirect =
 		/window\.location\.replace\(['"]\/language\/ko\/?['"]\)/.test(indexHtml) ||
-		/window\.location\.replace\(['"]language\/ko\/?['"]\)/.test(indexHtml);
+		/window\.location\.replace\(['"]language\/ko\/?['"]\)/.test(indexHtml) ||
+		/window\.location\.replace\(['"]https?:\/\/knp-law\.co\.kr\/language\/ko\/?['"]\)/.test(indexHtml) ||
+		/window\.location\.replace\(\s*redirectTarget\s*\)/.test(indexHtml);
 	if (!hasJsRedirect) {
 		problems.push('index.html is missing the JavaScript redirect fallback for language/ko/.');
 	}

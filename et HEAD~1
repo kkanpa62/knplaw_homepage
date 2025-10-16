@@ -1,0 +1,14 @@
+[33mcommit 0f49bc0803a4fda8f4d046661c66444e4d5435e6[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: kkanpa62 <moonhalo062@gmail.com>
+Date:   Thu Oct 16 12:07:09 2025 +0900
+
+    디렉팅오류수정2
+
+ .github/workflows/static.yml |  86 [32m+++++++++++++++++++++++++++++++++++[m[31m------------------------------------[m
+ index.html                   |  41 [32m+++++++++++++++++++++++++++[m[31m-------[m
+ language/cn/index.html       |  16 [32m+++++++++++++[m[31m-[m
+ language/en/index.html       |  16 [32m+++++++++++++[m[31m-[m
+ language/jp/index.html       |  16 [32m+++++++++++++[m[31m-[m
+ language/ko/index.html       |  16 [32m+++++++++++++[m[31m-[m
+ scripts/validate.js          | 131 [32m++++++++++++++++++++++++++++++++++++++++++++++++++++++++[m[31m-----------------------------------------------------[m
+ 7 files changed, 203 insertions(+), 119 deletions(-)
