@@ -3,44 +3,18 @@
 <head>
 	<meta charset="utf-8">
 	<title>KNP 특허법률사무소</title>
-		<meta http-equiv="refresh" content="0; url=language/ko/">
-		<link rel="canonical" href="http://knp-law.co.kr/language/ko/">
+		<meta http-equiv="refresh" content="0; url=language/ko/" data-redirect-meta>
+		<link rel="canonical" href="http://knp-law.co.kr/language/ko/" data-redirect-canonical>
 		<meta name="robots" content="noindex">
-		<script>
-			(function () {
-				var host = window.location.hostname || '';
-				var isLocal =
-					host === '' ||
-					host === 'localhost' ||
-					host === '127.0.0.1';
-				var redirectTarget = isLocal
-					? 'language/ko/'
-					: 'http://knp-law.co.kr/language/ko/';
-
-				window.__redirectTarget = redirectTarget;
-
-				var metaRefresh = document.querySelector('meta[http-equiv="refresh"]');
-				if (metaRefresh) {
-					metaRefresh.setAttribute('content', '0; url=' + redirectTarget);
-				}
-
-				// Redirect visitors to the appropriate target (GitHub Pages -> production site, local -> static copy).
-				window.location.replace(redirectTarget);
-			})();
-		</script>
 	</head>
 	<body>
-		<p>Redirecting to the <a id="redirect-link" href="language/ko/">KNP 특허법률사무소</a> homepage…</p>
+		<p>Redirecting to the <a data-redirect-link href="language/ko/">KNP 특허법률사무소</a> homepage…</p>
 		<script>
-			(function () {
-				var link = document.getElementById('redirect-link');
-				if (!link) {
-					return;
-				}
-
-				var target = window.__redirectTarget || 'http://knp-law.co.kr/language/ko/';
-				link.href = target;
-			})();
+			window.KNPLAW_REDIRECT = {
+				productionOrigin: 'http://knp-law.co.kr',
+				path: 'language/ko/'
+			};
 		</script>
+		<script src="static/js/redirect.js"></script>
 	</body>
 </html>

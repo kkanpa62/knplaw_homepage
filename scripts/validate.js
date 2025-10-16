@@ -26,20 +26,21 @@ try {
 	}
 
 	const hasMetaRefreshRedirect =
-		/<meta\s+http-equiv=["']refresh["']\s+content=["'][^"']*url=\/language\/ko\/?/i.test(indexHtml) ||
-		/<meta\s+http-equiv=["']refresh["']\s+content=["'][^"']*url=language\/ko\/?/i.test(indexHtml) ||
-		/<meta\s+http-equiv=["']refresh["']\s+content=["'][^"']*url=https?:\/\/knp-law\.co\.kr\/language\/ko\/?/i.test(indexHtml);
+		/<meta\s+http-equiv=["']refresh["'][^>]*content=["'][^"']*url=\/?language\/ko\/?/i.test(indexHtml) ||
+		/<meta\s+http-equiv=["']refresh["'][^>]*content=["'][^"']*url=https?:\/\/knp-law\.co\.kr\/language\/ko\/?/i.test(indexHtml);
 	if (!hasMetaRefreshRedirect) {
 		problems.push('index.html is missing the meta refresh redirect to language/ko/.');
 	}
 
-	const hasJsRedirect =
-		/window\.location\.replace\(['"]\/language\/ko\/?['"]\)/.test(indexHtml) ||
-		/window\.location\.replace\(['"]language\/ko\/?['"]\)/.test(indexHtml) ||
-		/window\.location\.replace\(['"]https?:\/\/knp-law\.co\.kr\/language\/ko\/?['"]\)/.test(indexHtml) ||
-		/window\.location\.replace\(\s*redirectTarget\s*\)/.test(indexHtml);
-	if (!hasJsRedirect) {
-		problems.push('index.html is missing the JavaScript redirect fallback for language/ko/.');
+	const hasSharedRedirectScript = /<script[^>]+src=["'][^"']*static\/js\/redirect\.js["']/i.test(indexHtml);
+	if (!hasSharedRedirectScript) {
+		problems.push('index.html must include static/js/redirect.js to handle runtime redirects.');
+	}
+
+	const hasRedirectConfig =
+		/window\.KNPLAW_REDIRECT\s*=\s*\{\s*[^}]*path\s*:\s*['"]language\/ko\/['"]/i.test(indexHtml);
+	if (!hasRedirectConfig) {
+		problems.push('index.html is missing window.KNPLAW_REDIRECT configuration for language/ko/.');
 	}
 } catch (error) {
 	problems.push(`Failed to read index.html: ${error.message}`);
