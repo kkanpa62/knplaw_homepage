@@ -1,4 +1,5 @@
 (function () {
+	// Normalise runtime redirects so each static landing page can share the same logic.
 	'use strict';
 
 	const DEFAULTS = {
