@@ -27,14 +27,20 @@
 	opacity: 1 !important;
 	visibility: visible !important;
 }
-.knp-team-fallback-grid .wf-cell,
-.knp-team-fallback-grid .team-container {
+.knp-team-fallback-grid .wf-cell {
 	width: auto !important;
+	height: 100%;
 	opacity: 1 !important;
 	visibility: visible !important;
-	height: 100%;
+	position: static !important;
+	display: block !important;
 }
 .knp-team-fallback-grid .team-container {
+	width: auto !important;
+	height: 100%;
+	opacity: 1 !important;
+	visibility: visible !important;
+	position: static !important;
 	display: flex;
 	flex-direction: column;
 }
@@ -97,17 +103,18 @@
 			return;
 		}
 
-		grid.classList.add('knp-team-fallback-grid');
-		grid.style.removeProperty('height');
-		grid.style.removeProperty('position');
-		grid.style.removeProperty('opacity');
-		grid.style.removeProperty('visibility');
-		grid.dataset.knpFallbackApplied = '1';
+	grid.classList.add('knp-team-fallback-grid');
+	grid.style.removeProperty('height');
+	grid.style.removeProperty('position');
+	grid.style.removeProperty('opacity');
+	grid.style.removeProperty('visibility');
+	grid.dataset.knpFallbackApplied = '1';
 
-		wrapper.classList.add('knp-team-fallback-grid-wrapper');
-		wrapper.style.removeProperty('height');
-		wrapper.style.removeProperty('opacity');
-		wrapper.style.removeProperty('visibility');
+	wrapper.classList.remove('loading-effect-fade-in');
+	wrapper.classList.add('knp-team-fallback-grid-wrapper');
+	wrapper.style.removeProperty('height');
+	wrapper.style.removeProperty('opacity');
+	wrapper.style.removeProperty('visibility');
 
 		const paginator = wrapper.querySelector('.paginator');
 		if (paginator) {
