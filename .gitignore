@@ -151,3 +151,17 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Allow WordPress static assets in dist directories
+!assets/
+!assets/lib/
+!assets/lib/css/
+!assets/lib/css/dist/
+!assets/lib/css/dist/block-library/
+!assets/lib/css/dist/block-library/style.min.css
+!assets/plugins/
+!assets/plugins/js_composer/
+!assets/plugins/js_composer/assets/
+!assets/plugins/js_composer/assets/js/
+!assets/plugins/js_composer/assets/js/dist/
+!assets/plugins/js_composer/assets/js/dist/js_composer_front.min.js
