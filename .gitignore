@@ -95,6 +95,20 @@ dist
 .temp
 .cache
 
+# Allow WordPress static assets that live in dist/ folders
+!assets/
+!assets/plugins/
+!assets/plugins/js_composer/
+!assets/plugins/js_composer/assets/
+!assets/plugins/js_composer/assets/js/
+!assets/plugins/js_composer/assets/js/dist/
+!assets/plugins/js_composer/assets/js/dist/js_composer_front.min.js
+!assets/lib/
+!assets/lib/css/
+!assets/lib/css/dist/
+!assets/lib/css/dist/block-library/
+!assets/lib/css/dist/block-library/style.min.css
+
 # Sveltekit cache directory
 .svelte-kit/
 
