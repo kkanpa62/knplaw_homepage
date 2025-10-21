@@ -1,4 +1,11 @@
 (function () {
+	/**
+	 * contact-config.js
+	 *
+	 * 정적 빌드된 페이지에서 문의 폼을 공통으로 사용하기 위한 기본 설정을 주입한다.
+	 * - window.KNPLAW_FORMS_* 값은 assets/themes/dt-the7/js/dt-contact-form.min.js에서 읽는다.
+	 * - env.local.js 등에서 미리 정의한 값이 있다면 그대로 사용하고, 없으면 아래 기본값으로 초기화한다.
+	 */
 	'use strict';
 
 	var global = window || {};
