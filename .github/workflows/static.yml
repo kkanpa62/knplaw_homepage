@@ -31,6 +31,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Create Google Maps env file
+        run: |
+          mkdir -p assets/js
+          cat <<'EOF' > assets/js/env.local.js
+          window.GOOGLE_MAPS_API_KEY = '${{ secrets.GOOGLE_MAPS_API_KEY }}';
+          EOF
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
@@ -41,11 +47,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-      - name: Create Google Maps env file
-        run: |
-          mkdir -p assets/js
-          cat <<'EOF' > assets/js/env.local.js
-          window.GOOGLE_MAPS_API_KEY = '${{ secrets.GOOGLE_MAPS_API_KEY }}';
-          EOF
 
 
