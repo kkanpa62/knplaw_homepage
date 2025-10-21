@@ -431,183 +431,47 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		<section class="wpb-content-wrapper"><div class="vc_row wpb_row vc_row-fluid wpb_animate_when_almost_visible wpb_slideInUp slideInUp vc_custom_1675755784620 vc_row-o-content-middle vc_row-flex"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper">
 	<div class="wpb_text_column wpb_content_element ">
 		<div class="wpb_wrapper">
-			<div id="kboard-default-list">
-
-	<!-- &#44172;&#49884;&#54032; &#51221;&#48372; &#49884;&#51089; -->
-	<div class="kboard-list-header">
-					<div class="kboard-total-count">
-				Total 3			</div>
-		
-		<div class="kboard-sort">
-			<form id="kboard-sort-form-1" method="get" action="/language/ko/%eb%89%b4%ec%8a%a4%ec%9e%90%eb%a3%8c/">
-				<input type="hidden" name="mod" value="list"><input type="hidden" name="pageid" value="1"><input type="hidden" name="kboard_list_sort_remember" value="1">
-				<select name="kboard_list_sort" onchange="jQuery('#kboard-sort-form-1').submit();">
-					<option value="newest" selected>Newest</option>
-					<option value="best">Best</option>
-					<option value="viewed">Viewed</option>
-					<option value="updated">Updated</option>
-				</select>
-			</form>
+					<style id="knp-news-board-style">
+			.knp-news-board{display:grid;gap:20px;margin-top:24px;}
+			.knp-news-card{padding:24px;border:1px solid #e3e7ee;border-radius:12px;background:#ffffff;box-shadow:0 4px 12px rgba(15,23,42,0.04);}
+			.knp-news-card.notice{background:#f4f8ff;border-color:#cfe0ff;}
+			.knp-news-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:600;background:#eff5ff;color:#0b63ce;margin-bottom:12px;}
+			.knp-news-card.notice .knp-news-badge{background:#0b63ce;color:#ffffff;}
+			.knp-news-title{font-size:18px;font-weight:600;margin:0 0 12px;color:#111827;}
+			.knp-news-desc{margin:0 0 16px;line-height:1.6;color:#4b5563;}
+			.knp-news-meta{display:flex;flex-wrap:wrap;gap:12px;font-size:13px;color:#6b7280;}
+			@media (min-width:768px){.knp-news-board{grid-template-columns:repeat(2,minmax(0,1fr));}}
+			@media (min-width:1024px){.knp-news-board{grid-template-columns:repeat(3,minmax(0,1fr));}}
+			.knp-news-card.notice{grid-column:1/-1;}
+		</style>
+		<div class="knp-news-board">
+			<article class="knp-news-card notice">
+				<span class="knp-news-badge">공지</span>
+				<h4 class="knp-news-title">뉴스&amp;자료 게시판 테스트 중입니다.</h4>
+				<p class="knp-news-desc">정식 콘텐츠 오픈을 준비 중입니다. 조만간 더 풍부한 소식으로 찾아뵙겠습니다.</p>
+				<div class="knp-news-meta"><span>작성자 KNP</span><span>게시일 2023.02.01</span></div>
+			</article>
+			<article class="knp-news-card">
+				<span class="knp-news-badge">뉴스</span>
+				<h4 class="knp-news-title">KNP 소식을 준비하고 있습니다.</h4>
+				<p class="knp-news-desc">KNP 특허법률사무소의 최신 소식과 활동 내용을 정리해 곧 공유해 드릴 예정입니다.</p>
+				<div class="knp-news-meta"><span>작성자 KNP</span><span>게시일 2023.02.01</span></div>
+			</article>
+			<article class="knp-news-card">
+				<span class="knp-news-badge">자료</span>
+				<h4 class="knp-news-title">자료 게시판 콘텐츠를 준비 중입니다.</h4>
+				<p class="knp-news-desc">지식재산권과 관련된 자료를 정리하여 업계에 도움이 되는 정보로 꾸준히 업데이트하겠습니다.</p>
+				<div class="knp-news-meta"><span>작성자 KNP</span><span>게시일 2023.02.01</span></div>
+			</article>
+			<article class="knp-news-card">
+				<span class="knp-news-badge">뉴스</span>
+				<h4 class="knp-news-title">업데이트를 위한 테스트 콘텐츠입니다.</h4>
+				<p class="knp-news-desc">홈페이지 개편과 함께 뉴스&amp;자료 게시판이 안정적으로 동작하는지 확인하고 있습니다.</p>
+				<div class="knp-news-meta"><span>작성자 KNP</span><span>게시일 2023.02.01</span></div>
+			</article>
+		</div>
 		</div>
 	</div>
-	<!-- &#44172;&#49884;&#54032; &#51221;&#48372; &#45149; -->
-
-	<!-- &#52852;&#53580;&#44256;&#47532; &#49884;&#51089; -->
-	<div class="kboard-category category-mobile">
-	<form id="kboard-category-form-1" method="get" action="/language/ko/%eb%89%b4%ec%8a%a4%ec%9e%90%eb%a3%8c/?pageid=1">
-		<input type="hidden" name="mod" value="list"><input type="hidden" name="pageid" value="1">		
-					<select name="category1" onchange="jQuery('#kboard-category-form-1').submit();">
-				<option value="">All</option>
-								<option value="&#45684;&#49828;">&#45684;&#49828;</option>
-								<option value="&#51088;&#47308;">&#51088;&#47308;</option>
-							</select>
-				
-				
-				
-				
-			</form>
-</div>
-
-<div class="kboard-category category-pc">
-			<ul class="kboard-category-list">
-			<li class="kboard-category-selected"><a href="/language/ko/%eb%89%b4%ec%8a%a4%ec%9e%90%eb%a3%8c/?mod=list&amp;pageid=1">All</a></li>
-						<li>
-				<a href="/language/ko/%eb%89%b4%ec%8a%a4%ec%9e%90%eb%a3%8c/?category1=%EB%89%B4%EC%8A%A4&amp;mod=list&amp;pageid=1">&#45684;&#49828;</a>
-			</li>
-						<li>
-				<a href="/language/ko/%eb%89%b4%ec%8a%a4%ec%9e%90%eb%a3%8c/?category1=%EC%9E%90%EB%A3%8C&amp;mod=list&amp;pageid=1">&#51088;&#47308;</a>
-			</li>
-					</ul>
-		
-		
-		
-		
-	</div>	<!-- &#52852;&#53580;&#44256;&#47532; &#45149; -->
-
-	<!-- &#47532;&#49828;&#53944; &#49884;&#51089; -->
-	<div class="kboard-list">
-		<table>
-			<thead>
-				<tr>
-					<td class="kboard-list-uid">Number</td>
-					<td class="kboard-list-category1">&#44396;&#48516;</td>
-					<td class="kboard-list-title">Title</td>
-					<td class="kboard-list-user">Author</td>
-					<td class="kboard-list-date">Date</td>
-					<!--<td class="kboard-list-vote">Votes</td>
-					<td class="kboard-list-view">Views</td>-->
-				</tr>
-			</thead>
-			<tbody>
-								<tr class="kboard-list-notice">
-					<td class="kboard-list-uid">Notice</td>
-					<td class="kboard-list-category1">&#45684;&#49828;</td>
-					<td class="kboard-list-title">
-						<a href="/language/ko/%eb%89%b4%ec%8a%a4%ec%9e%90%eb%a3%8c/?uid=4&amp;mod=document&amp;pageid=1">
-							<div class="kboard-default-cut-strings">
-								&#45684;&#49828;&amp;&#51088;&#47308; &#44544;&#50416;&#44592; &#53580;&#49828;&#53944;&#51473;&#51077;&#45768;&#45796;.																								<span class="kboard-comments-count"></span>
-							</div>
-						</a>
-						<div class="kboard-mobile-contents">
-							<span class="contents-item kboard-category1">&#45684;&#49828;</span>
-							<span class="contents-separator kboard-date">|</span>
-							<span class="contents-item kboard-user">KNP</span>
-							<span class="contents-separator kboard-date">|</span>
-							<span class="contents-item kboard-date">2023.02.01</span>
-							<!--<span class="contents-separator kboard-vote">|</span>
-							<span class="contents-item kboard-vote">Votes 0</span>
-							<span class="contents-separator kboard-view">|</span>
-							<span class="contents-item kboard-view">Views 1043</span>-->
-						</div>
-					</td>
-					<td class="kboard-list-user">KNP</td>
-					<td class="kboard-list-date">2023.02.01</td>
-					<!--<td class="kboard-list-vote">0</td>
-					<td class="kboard-list-view">1043</td>-->
-				</tr>
-																<tr class="">
-					<td class="kboard-list-uid">2</td>
-					<td class="kboard-list-category1">&#45684;&#49828;</td>
-					<td class="kboard-list-title">
-						<a href="/language/ko/%eb%89%b4%ec%8a%a4%ec%9e%90%eb%a3%8c/?uid=6&amp;mod=document&amp;pageid=1">
-							<div class="kboard-default-cut-strings">
-								&#45684;&#49828;&amp;&#51088;&#47308; &#44544;&#50416;&#44592; &#53580;&#49828;&#53944;&#51473;&#51077;&#45768;&#45796;.																								<span class="kboard-comments-count"></span>
-							</div>
-						</a>
-						<div class="kboard-mobile-contents">
-							<span class="contents-item kboard-category1">&#45684;&#49828;</span>
-							<span class="contents-separator kboard-date">|</span>
-							<span class="contents-item kboard-user">KNP</span>
-							<span class="contents-separator kboard-date">|</span>
-							<span class="contents-item kboard-date">2023.02.01</span>
-							<!--<span class="contents-separator kboard-vote">|</span>
-							<span class="contents-item kboard-vote">Votes 0</span>
-							<span class="contents-separator kboard-view">|</span>
-							<span class="contents-item kboard-view">Views 1075</span>-->
-						</div>
-					</td>
-					<td class="kboard-list-user">KNP</td>
-					<td class="kboard-list-date">2023.02.01</td>
-					<!--<td class="kboard-list-vote">0</td>
-					<td class="kboard-list-view">1075</td>-->
-				</tr>
-												<tr class="">
-					<td class="kboard-list-uid">1</td>
-					<td class="kboard-list-category1">&#51088;&#47308;</td>
-					<td class="kboard-list-title">
-						<a href="/language/ko/%eb%89%b4%ec%8a%a4%ec%9e%90%eb%a3%8c/?uid=5&amp;mod=document&amp;pageid=1">
-							<div class="kboard-default-cut-strings">
-								&#45684;&#49828;&amp;&#51088;&#47308; &#44544;&#50416;&#44592; &#53580;&#49828;&#53944;&#51473;&#51077;&#45768;&#45796;.																								<span class="kboard-comments-count"></span>
-							</div>
-						</a>
-						<div class="kboard-mobile-contents">
-							<span class="contents-item kboard-category1">&#51088;&#47308;</span>
-							<span class="contents-separator kboard-date">|</span>
-							<span class="contents-item kboard-user">KNP</span>
-							<span class="contents-separator kboard-date">|</span>
-							<span class="contents-item kboard-date">2023.02.01</span>
-							<!--<span class="contents-separator kboard-vote">|</span>
-							<span class="contents-item kboard-vote">Votes 0</span>
-							<span class="contents-separator kboard-view">|</span>
-							<span class="contents-item kboard-view">Views 1017</span>-->
-						</div>
-					</td>
-					<td class="kboard-list-user">KNP</td>
-					<td class="kboard-list-date">2023.02.01</td>
-					<!--<td class="kboard-list-vote">0</td>
-					<td class="kboard-list-view">1017</td>-->
-				</tr>
-											</tbody>
-		</table>
-	</div>
-	<!-- &#47532;&#49828;&#53944; &#45149; -->
-
-	<!-- &#54168;&#51060;&#51669; &#49884;&#51089; -->
-	<div class="kboard-pagination">
-		<ul class="kboard-pagination-pages">
-			<li class="active"><a href="/language/ko/%eb%89%b4%ec%8a%a4%ec%9e%90%eb%a3%8c/?pageid=1&amp;mod=list" onclick="return false">1</a></li>		</ul>
-	</div>
-	<!-- &#54168;&#51060;&#51669; &#45149; -->
-
-	<!-- &#44160;&#49353;&#54268; &#49884;&#51089; -->
-	<div class="kboard-search">
-		<form id="kboard-search-form-1" method="get" action="/language/ko/%eb%89%b4%ec%8a%a4%ec%9e%90%eb%a3%8c/?pageid=1">
-			<input type="hidden" name="mod" value="list"><input type="hidden" name="pageid" value="1">
-			<select name="target">
-				<option value="">All</option>
-				<option value="title">Title</option>
-				<option value="content">Content</option>
-				<option value="member_display">Author</option>
-			</select>
-			<input type="text" name="keyword" value="">
-			<button type="submit" class="kboard-default-button-small">Search</button>
-		</form>
-	</div>
-	<!-- &#44160;&#49353;&#54268; &#45149; -->
-
-	
-</div>
-
 		</div>
 	</div>
 </div></div></div></div>
