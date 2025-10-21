@@ -45,6 +45,26 @@
 
     var map = new google.maps.Map(el, mapOptions);
 
+    function resolveMarkerUrl(position) {
+      if (el.dataset.markerUrl) {
+        return el.dataset.markerUrl;
+      }
+
+      if (lat !== null && lng !== null) {
+        return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(lat + ',' + lng);
+      }
+
+      if (position && typeof position.lat === 'function' && typeof position.lng === 'function') {
+        return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(position.lat() + ',' + position.lng());
+      }
+
+      if (el.dataset.address) {
+        return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(el.dataset.address);
+      }
+
+      return null;
+    }
+
     function placeMarker(position) {
       map.setCenter(position);
       var markerTitle = el.dataset.markerTitle || '';
@@ -54,15 +74,7 @@
         title: markerTitle || undefined
       });
 
-      var infoWindowContent = el.dataset.markerInfo;
-      if (infoWindowContent && getBooleanDatasetValue(el, 'markerInfoEnabled', false)) {
-        var infoWindow = new google.maps.InfoWindow({
-          content: infoWindowContent
-        });
-        infoWindow.open(map, marker);
-      }
-
-      var markerUrl = el.dataset.markerUrl;
+      var markerUrl = resolveMarkerUrl(position);
       if (markerUrl) {
         var target = el.dataset.markerUrlTarget === '_self' ? '_self' : '_blank';
         marker.addListener('click', function () {
