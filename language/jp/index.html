@@ -744,60 +744,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 </style><a href="/?page_id=5362" class="default-btn-shortcode dt-btn link-hover-off btn-inline-left btn-flat  vc_custom_1677824693077" id="default-btn-c88c848094da768503f9a3a93d761483" title="&#30693;&#30340;&#36001;&#29987;&#27177;"><span>View detail</span></a></div></div></div></div></div></div></div></div><div class="vc_row wpb_row vc_row-fluid vc_custom_1675225659207 vc_row-o-equal-height vc_row-flex"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner vc_custom_1675225624471"><div class="wpb_wrapper"><div class="vc_row wpb_row vc_inner vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-6 vc_col-lg-offset-0 vc_col-md-offset-0 vc_col-sm-offset-0 vc_col-xs-6 vc_col-has-fill"><div class="vc_column-inner vc_custom_1677827553953"><div class="wpb_wrapper"></div></div></div></div><div id="ultimate-heading-48268ee07b204e40" class="uvc-heading ult-adjust-bottom-margin ultimate-heading-48268ee07b204e40 uvc-3308 ff_jp" data-hspacer="no_spacer" data-halign="center" style="text-align:center"><div class="uvc-heading-spacer no_spacer" style="top"></div><div class="uvc-main-heading ult-responsive" data-ultimate-target=".uvc-heading.ultimate-heading-48268ee07b204e40 h2" data-responsive-json-new='{"font-size":"desktop:40px;tablet:35px;tablet_portrait:28px;mobile_landscape:28px;mobile:25px;","line-height":"desktop:40px;"}'><h2 style="font-weight:bold;margin-bottom:10px;">&#20132;&#36890;&#12450;&#12463;&#12475;&#12473;</h2></div></div></div></div></div></div><div class="vc_row wpb_row vc_row-fluid wpb_animate_when_almost_visible wpb_slideInUp slideInUp vc_custom_1675753470512 vc_row-has-fill"><div class="wpb_column vc_column_container vc_col-sm-12 vc_col-has-fill"><div class="vc_column-inner vc_custom_1675225411769"><div class="wpb_wrapper">
 	<div class="wpb_raw_code wpb_content_element wpb_raw_html vc_custom_1676968766400">
 		<div class="wpb_wrapper">
-			<div id="map" style="width:100%;height:400px;"></div>
-<script type="text/javascript" src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=api_key&amp;libraries=services"></script>
-<script>
-var mapContainer = document.getElementById('map'), // &#51648;&#46020;&#47484; &#54364;&#49884;&#54624; div 
-    mapOption = {
-        center: new daum.maps.LatLng(33.450701, 126.570667), // &#51648;&#46020;&#51032; &#51473;&#49900;&#51340;&#54364;
-        level: 3, // &#51648;&#46020;&#51032; &#54869;&#45824; &#47112;&#48296;
-		scrollwheel: false // &#47560;&#50864;&#49828; &#55072;, &#47784;&#48148;&#51068; &#53552;&#52824;&#47484; &#51060;&#50857;&#54620; &#54869;&#45824; &#48143; &#52629;&#49548; &#44032;&#45733; &#50668;&#48512;
-    };  
-
-// &#51648;&#46020;&#47484; &#49373;&#49457;&#54633;&#45768;&#45796;    
-var map = new daum.maps.Map(mapContainer, mapOption); 
-
-// &#51068;&#48152; &#51648;&#46020;&#50752; &#49828;&#52852;&#51060;&#48624;&#47196; &#51648;&#46020; &#53440;&#51077;&#51012; &#51204;&#54872;&#54624; &#49688; &#51080;&#45716; &#51648;&#46020;&#53440;&#51077; &#52968;&#53944;&#47204;&#51012; &#49373;&#49457;&#54633;&#45768;&#45796;
-var mapTypeControl = new daum.maps.MapTypeControl();
-
-// &#51648;&#46020;&#50640; &#52968;&#53944;&#47204;&#51012; &#52628;&#44032;&#54644;&#50556; &#51648;&#46020;&#50948;&#50640; &#54364;&#49884;&#46121;&#45768;&#45796;
-// daum.maps.ControlPosition&#51008; &#52968;&#53944;&#47204;&#51060; &#54364;&#49884;&#46112; &#50948;&#52824;&#47484; &#51221;&#51032;&#54616;&#45716;&#45936; TOPRIGHT&#45716; &#50724;&#47480;&#51901; &#50948;&#47484; &#51032;&#48120;&#54633;&#45768;&#45796;
-map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
-
-// &#51648;&#46020; &#54869;&#45824; &#52629;&#49548;&#47484; &#51228;&#50612;&#54624; &#49688; &#51080;&#45716;  &#51468; &#52968;&#53944;&#47204;&#51012; &#49373;&#49457;&#54633;&#45768;&#45796;
-var zoomControl = new daum.maps.ZoomControl();
-map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
-
-// &#51452;&#49548;-&#51340;&#54364; &#48320;&#54872; &#44061;&#52404;&#47484; &#49373;&#49457;&#54633;&#45768;&#45796;
-var geocoder = new daum.maps.services.Geocoder();
-
-// &#51452;&#49548;&#47196; &#51340;&#54364;&#47484; &#44160;&#49353;&#54633;&#45768;&#45796;
-geocoder.addressSearch('&#49436;&#50872;&#49884; &#44053;&#45224;&#44396; &#46020;&#44257;&#47196; 111', function(result, status) {
-
-        // &#51221;&#49345;&#51201;&#51004;&#47196; &#44160;&#49353;&#51060; &#50756;&#47308;&#46096;&#51004;&#47732; 
-        if (status === daum.maps.services.Status.OK) {
-
-        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-
-        // &#44208;&#44284;&#44050;&#51004;&#47196; &#48155;&#51008; &#50948;&#52824;&#47484; &#47560;&#52964;&#47196; &#54364;&#49884;&#54633;&#45768;&#45796;
-        var marker = new daum.maps.Marker({
-            map: map,
-            position: coords
-        });
-
-        // &#51064;&#54252;&#50952;&#46020;&#50864;&#47196; &#51109;&#49548;&#50640; &#45824;&#54620; &#49444;&#47749;&#51012; &#54364;&#49884;&#54633;&#45768;&#45796;
-        var infowindow = new daum.maps.InfoWindow({
-            content: '<div style="width:200px;text-align:center;padding:6px 6px 10px 6px;">KNP International</script></div>'
-        });
-        infowindow.open(map, marker);
-
-        // &#51648;&#46020;&#51032; &#51473;&#49900;&#51012; &#44208;&#44284;&#44050;&#51004;&#47196; &#48155;&#51008; &#50948;&#52824;&#47196; &#51060;&#46041;&#49884;&#53429;&#45768;&#45796;
-        map.setCenter(coords);
-
-        // &#47560;&#50864;&#49828; &#55072;&#47196; &#51648;&#46020; &#54869;&#45824;,&#52629;&#49548; &#44032;&#45733;&#50668;&#48512;&#47484; &#49444;&#51221;&#54633;&#45768;&#45796;
-        map.setZoomable(false);  
-    } 
-});    
+			<div id="map" data-google-map data-address="&#49436;&#50872;&#49884; &#44053;&#45224;&#44396; &#46020;&#44257;&#47196; 111" data-marker-title="KNP International" data-marker-info="KNP International" data-zoom="17" style="width:100%;height:400px;"></div>
+<script src="/assets/js/env.local.js"></script>
+<script src="/assets/js/knp-google-map.js"></script>
 
 		</div>
 	</div>
