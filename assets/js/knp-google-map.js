@@ -24,13 +24,6 @@
     return value.toLowerCase() === 'true';
   }
 
-  function buildInfoContent(text) {
-    if (!text) {
-      return null;
-    }
-    return '<div style="width:200px;text-align:center;padding:6px 6px 10px 6px;">' + text + '</div>';
-  }
-
   function initialiseElement(el) {
     if (el.dataset.googleMapLoaded === 'true') {
       return;
@@ -61,9 +54,20 @@
         title: markerTitle || undefined
       });
 
-      var infoWindowContent = buildInfoContent(el.dataset.markerInfo || markerTitle);
-      if (infoWindowContent) {
-        new google.maps.InfoWindow({ content: infoWindowContent }).open(map, marker);
+      var infoWindowContent = el.dataset.markerInfo;
+      if (infoWindowContent && getBooleanDatasetValue(el, 'markerInfoEnabled', false)) {
+        var infoWindow = new google.maps.InfoWindow({
+          content: infoWindowContent
+        });
+        infoWindow.open(map, marker);
+      }
+
+      var markerUrl = el.dataset.markerUrl;
+      if (markerUrl) {
+        var target = el.dataset.markerUrlTarget === '_self' ? '_self' : '_blank';
+        marker.addListener('click', function () {
+          window.open(markerUrl, target);
+        });
       }
     }
 
