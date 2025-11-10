@@ -1,145 +1,154 @@
 (function () {
-	/**
-	 * Injects minimal CSS so that team cards remain visible even when
-	 * third-party sliders/isotope scripts fail to initialise.
-	 */
-	const style = document.createElement('style');
-	style.id = 'knp-team-fallback-style';
-	style.textContent = `
-.knp-team-fallback-carousel {
-	display: grid !important;
-	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-	gap: 30px;
-	opacity: 1 !important;
-	visibility: visible !important;
-}
-.knp-team-fallback-carousel .team-container {
-	opacity: 1 !important;
-	visibility: visible !important;
-}
-.knp-team-fallback-carousel .team-media {
-	margin-bottom: 16px;
-}
-.knp-team-fallback-grid {
-	display: grid !important;
-	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-	gap: 40px 24px;
-	opacity: 1 !important;
-	visibility: visible !important;
-}
-.knp-team-fallback-grid .wf-cell {
-	width: auto !important;
-	height: 100%;
-	opacity: 1 !important;
-	visibility: visible !important;
-	position: static !important;
-	display: block !important;
-}
-.knp-team-fallback-grid .team-container {
-	width: auto !important;
-	height: 100%;
-	opacity: 1 !important;
-	visibility: visible !important;
-	position: static !important;
-	display: flex;
-	flex-direction: column;
-}
-.knp-team-fallback-grid .team-media {
-	margin-bottom: 16px;
-}
-.knp-team-fallback-hidden {
-	display: none !important;
-}
-`;
-	if (!document.head.querySelector('#knp-team-fallback-style')) {
-		document.head.appendChild(style);
-	}
+	var STYLE_ID = 'knp-team-fallback-style';
+	var FALLBACK_GRID = 'knp-team-fallback-grid';
+	var FALLBACK_GRID_WRAPPER = 'knp-team-fallback-grid-wrapper';
+	var FALLBACK_CAROUSEL = 'knp-team-fallback-carousel';
+	var HIDDEN_CLASS = 'knp-team-fallback-hidden';
 
-	const ready = (fn) => {
+	function ready(fn) {
 		if (document.readyState === 'loading') {
-			document.addEventListener('DOMContentLoaded', fn, { once: true });
+			var handler = function () {
+				document.removeEventListener('DOMContentLoaded', handler);
+				fn();
+			};
+			document.addEventListener('DOMContentLoaded', handler);
 		} else {
 			fn();
 		}
-	};
+	}
 
-	const hasOwlLoaded = (carousel) =>
-		carousel.classList.contains('owl-loaded') || carousel.querySelector('.owl-stage');
-
-	const enhanceCarousel = (carousel) => {
-		if (!carousel || hasOwlLoaded(carousel)) {
+	function addClass(el, className) {
+		if (!el) {
 			return;
 		}
+		if (el.classList) {
+			el.classList.add(className);
+		} else if (!hasClass(el, className)) {
+			el.className = el.className ? el.className + ' ' + className : className;
+		}
+	}
 
-		const items = carousel.querySelectorAll('.team-container');
+	function removeClass(el, className) {
+		if (!el) {
+			return;
+		}
+		if (el.classList) {
+			el.classList.remove(className);
+		} else if (hasClass(el, className)) {
+			var classes = el.className ? el.className.split(/\s+/) : [];
+			for (var i = classes.length - 1; i >= 0; i--) {
+				if (classes[i] === className) {
+					classes.splice(i, 1);
+				}
+			}
+			el.className = classes.join(' ');
+		}
+	}
+
+	function hasClass(el, className) {
+		if (!el || !className) {
+			return false;
+		}
+		if (el.classList) {
+			return el.classList.contains(className);
+		}
+		var classes = el.className ? el.className.split(/\s+/) : [];
+		for (var i = 0; i < classes.length; i++) {
+			if (classes[i] === className) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	function injectStyle() {
+		if (document.getElementById(STYLE_ID)) {
+			return;
+		}
+		var style = document.createElement('style');
+		style.id = STYLE_ID;
+		style.textContent =
+			'.' + FALLBACK_CAROUSEL + '{display:grid !important;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:30px;opacity:1 !important;visibility:visible !important;}' +
+			'.' + FALLBACK_CAROUSEL + ' .team-container{opacity:1 !important;visibility:visible !important;}' +
+			'.' + FALLBACK_CAROUSEL + ' .team-media{margin-bottom:16px;}' +
+			'.' + FALLBACK_GRID + '{display:grid !important;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px 24px;opacity:1 !important;visibility:visible !important;}' +
+			'.' + FALLBACK_GRID + ' .wf-cell{width:auto !important;height:100%;opacity:1 !important;visibility:visible !important;position:static !important;display:block !important;}' +
+			'.' + FALLBACK_GRID + ' .team-container{width:auto !important;height:100%;opacity:1 !important;visibility:visible !important;position:static !important;display:flex;flex-direction:column;}' +
+			'.' + FALLBACK_GRID + ' .team-media{margin-bottom:16px;}' +
+			'.' + HIDDEN_CLASS + '{display:none !important;}';
+		document.head.appendChild(style);
+	}
+
+	function hasOwlLoaded(carousel) {
+		return (
+			hasClass(carousel, 'owl-loaded') ||
+			(carousel.querySelector && carousel.querySelector('.owl-stage'))
+		);
+	}
+
+	function enhanceCarousel(carousel) {
+		if (!carousel || hasOwlLoaded(carousel) || carousel.dataset.knpFallback === 'carousel') {
+			return;
+		}
+		var items = carousel.querySelectorAll('.team-container');
 		if (!items.length) {
 			return;
 		}
-
-		carousel.classList.add('knp-team-fallback-carousel');
+		addClass(carousel, FALLBACK_CAROUSEL);
 		carousel.style.removeProperty('display');
 		carousel.style.removeProperty('opacity');
 		carousel.style.removeProperty('visibility');
 		carousel.dataset.knpFallback = 'carousel';
-	};
+	}
 
-	const enhanceMasonry = (wrapper) => {
+	function enhanceMasonry(wrapper) {
 		if (!wrapper) {
 			return;
 		}
-
-		const grid = wrapper.querySelector('.dt-css-grid');
+		var grid = wrapper.querySelector('.dt-css-grid');
 		if (!grid) {
 			return;
 		}
-
-		// The7 adds inline width/height once isotope initialises. Bail out if already active.
-		if (wrapper.classList.contains('isotope-inited') || grid.dataset.knpFallbackApplied === '1') {
+		if (hasClass(wrapper, 'isotope-inited') || grid.dataset.knpFallbackApplied === '1') {
 			return;
 		}
-
-		const items = grid.querySelectorAll('.team-container');
+		var items = grid.querySelectorAll('.team-container');
 		if (!items.length) {
 			return;
 		}
+		addClass(grid, FALLBACK_GRID);
+		grid.style.removeProperty('height');
+		grid.style.removeProperty('position');
+		grid.style.removeProperty('opacity');
+		grid.style.removeProperty('visibility');
+		grid.dataset.knpFallbackApplied = '1';
 
-	grid.classList.add('knp-team-fallback-grid');
-	grid.style.removeProperty('height');
-	grid.style.removeProperty('position');
-	grid.style.removeProperty('opacity');
-	grid.style.removeProperty('visibility');
-	grid.dataset.knpFallbackApplied = '1';
+		removeClass(wrapper, 'loading-effect-fade-in');
+		addClass(wrapper, FALLBACK_GRID_WRAPPER);
+		wrapper.style.removeProperty('height');
+		wrapper.style.removeProperty('opacity');
+		wrapper.style.removeProperty('visibility');
 
-	wrapper.classList.remove('loading-effect-fade-in');
-	wrapper.classList.add('knp-team-fallback-grid-wrapper');
-	wrapper.style.removeProperty('height');
-	wrapper.style.removeProperty('opacity');
-	wrapper.style.removeProperty('visibility');
-
-		const paginator = wrapper.querySelector('.paginator');
+		var paginator = wrapper.querySelector('.paginator');
 		if (paginator) {
-			paginator.classList.add('knp-team-fallback-hidden');
+			addClass(paginator, HIDDEN_CLASS);
 		}
-	};
+	}
 
-	const applyFallbacks = () => {
-		document
-			.querySelectorAll('.team-carousel-shortcode.dt-owl-carousel-call')
-			.forEach((carousel) => {
-				if (carousel.dataset.knpFallback !== 'carousel') {
-					enhanceCarousel(carousel);
-				}
-			});
+	function applyFallbacks() {
+		var carousels = document.querySelectorAll('.team-carousel-shortcode.dt-owl-carousel-call');
+		for (var i = 0; i < carousels.length; i++) {
+			enhanceCarousel(carousels[i]);
+		}
+		var grids = document.querySelectorAll('.dt-team-masonry-shortcode');
+		for (var j = 0; j < grids.length; j++) {
+			enhanceMasonry(grids[j]);
+		}
+	}
 
-		document.querySelectorAll('.dt-team-masonry-shortcode').forEach((wrapper) => {
-			enhanceMasonry(wrapper);
-		});
-	};
-
-	ready(() => {
-		// Give the original scripts a chance to run. If nothing happens within 1s, fall back.
+	ready(function () {
+		injectStyle();
 		setTimeout(applyFallbacks, 1100);
-		// Re-check after additional delay in case of lazy network scripts.
 		setTimeout(applyFallbacks, 2500);
 	});
 })();
