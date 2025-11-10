@@ -330,10 +330,81 @@ document.addEventListener("DOMContentLoaded", function(event) {
     padding-bottom: 0px;
   }
 }
+.knp-hero-slider-wrap {
+	padding: 0;
+	position: relative;
+	z-index: 0;
+}
+.knp-hero-slider-wrap rs-module-wrap,
+.knp-hero-slider-wrap #rev_slider_3_1_wrapper {
+	position: relative;
+	z-index: 1;
+}
+.knp-hero-slider-cta {
+	position: absolute;
+	top: 140px;
+	right: 60px;
+	z-index: 99999;
+	pointer-events: auto;
+	display: flex;
+}
+.knp-hero-cta-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 9px 20px 9px 18px;
+	border-radius: 999px;
+	background: linear-gradient(135deg, #0074c2, #00a7ff);
+	color: #ffffff;
+	font-size: 15px;
+	font-weight: 600;
+	pointer-events: auto;
+	cursor: pointer;
+	text-decoration: none;
+	box-shadow: 0 10px 25px rgba(0, 122, 201, 0.35);
+	transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+	touch-action: manipulation;
+	white-space: nowrap;
+}
+.knp-hero-cta-link::after {
+	content: "↗";
+	font-size: 18px;
+}
+.knp-hero-cta-link:hover,
+.knp-hero-cta-link:focus {
+	transform: translateY(-2px);
+	box-shadow: 0 14px 30px rgba(0, 122, 201, 0.45);
+	opacity: 0.95;
+	outline: none;
+}
+.knp-hero-cta-link:focus-visible {
+	box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.55), 0 12px 26px rgba(0, 122, 201, 0.45);
+}
+@media screen and (max-width: 991px) {
+	.knp-hero-slider-cta {
+		top: 110px;
+		right: 30px;
+	}
+}
+@media screen and (max-width: 600px) {
+	.knp-hero-slider-cta {
+		left: 20px;
+		right: 20px;
+		bottom: 30px;
+		top: auto;
+	}
+	.knp-hero-cta-link {
+		width: 100%;
+		justify-content: center;
+		font-size: 15px;
+		padding: 11px 20px;
+	}
+}
 
 </style><div id="main-slideshow">
 			<!-- START KNP_main_slide_kr REVOLUTION SLIDER 6.6.10 --><p class="rs-p-wp-fix"></p>
-			<rs-module-wrap id="rev_slider_3_1_wrapper" data-source="gallery" style="visibility:hidden;background:#000000;padding:0;margin:0px auto;margin-top:0;margin-bottom:0;">
+			<div class="knp-hero-slider-wrap">
+				<rs-module-wrap id="rev_slider_3_1_wrapper" data-source="gallery" style="visibility:hidden;background:#000000;padding:0;margin:0px auto;margin-top:0;margin-bottom:0;">
 				<rs-module id="rev_slider_3_1" style="" data-version="6.6.10">
 					<rs-slides style="overflow: hidden; position: absolute;">
 						<rs-slide style="position: absolute;" data-key="rs-11" data-title="KNP&#49548;&#44060;" data-thumb="/assets/images/global/main_01_02.jpg" data-duration="9700" data-anim="ms:600;" data-in="o:0;" data-out="a:false;" data-p1="B2B Services" data-p3="View">
@@ -457,6 +528,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 					setREVStartSize({c: 'rev_slider_3_1',rl:[1240,1024,778,480],el:[700,700,700,800],gw:[1300,1100,900,500],gh:[700,700,700,800],type:'standard',justify:'',layout:'fullwidth',mh:"0"});if (window.RS_MODULES!==undefined && window.RS_MODULES.modules!==undefined && window.RS_MODULES.modules["revslider31"]!==undefined) {window.RS_MODULES.modules["revslider31"].once = false;window.revapi3 = undefined;if (window.RS_MODULES.checkMinimal!==undefined) window.RS_MODULES.checkMinimal()}
 				</script>
 			</rs-module-wrap>
+				<div class="knp-hero-slider-cta">
+					<a class="knp-hero-cta-link" href="https://coss-knp.com" target="_blank" rel="noopener noreferrer">COSS KNP</a>
+				</div>
+			</div>
 			<!-- END REVOLUTION SLIDER -->
 </div>
 
