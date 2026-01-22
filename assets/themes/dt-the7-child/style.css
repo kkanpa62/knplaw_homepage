@@ -91,6 +91,40 @@ element.style {
 .footer_font_cus_jp{font-family:Noto Sans JP !important; color:#fff; font-size:13px; font-weight:400;}
 .footer_font_cus_cn{font-family:Noto Sans SC !important; color:#fff; font-size:13px; font-weight:400;}
 
+/* Elementor responsive visibility helpers (static export safety) */
+@media (min-width: 1025px) {
+    .elementor-hidden-desktop { display: none !important; }
+}
+@media (max-width: 1024px) {
+    .elementor-hidden-tablet { display: none !important; }
+}
+@media (max-width: 767px) {
+    .elementor-hidden-mobile { display: none !important; }
+}
+
+/* KO single member pages: top member list thumbnail layout (desktop fallback when owl not loaded) */
+html[lang^="ko"] body.single-dt_team .elementor-widget-the7_elements_carousel.elementor-hidden-tablet.elementor-hidden-mobile .portfolio-carousel-shortcode:not(.owl-loaded) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+html[lang^="ko"] body.single-dt_team .elementor-widget-the7_elements_carousel.elementor-hidden-tablet.elementor-hidden-mobile .portfolio-carousel-shortcode:not(.owl-loaded) .owl-item,
+html[lang^="ko"] body.single-dt_team .elementor-widget-the7_elements_carousel.elementor-hidden-tablet.elementor-hidden-mobile .portfolio-carousel-shortcode:not(.owl-loaded) .post {
+    width: 150px;
+    max-width: 150px;
+}
+
+html[lang^="ko"] body.single-dt_team .elementor-widget-the7_elements_carousel.elementor-hidden-tablet.elementor-hidden-mobile .portfolio-carousel-shortcode:not(.owl-loaded) .post-thumbnail,
+html[lang^="ko"] body.single-dt_team .elementor-widget-the7_elements_carousel.elementor-hidden-tablet.elementor-hidden-mobile .portfolio-carousel-shortcode:not(.owl-loaded) .post-thumbnail img {
+    width: 150px;
+    height: 150px;
+}
+
+html[lang^="ko"] body.single-dt_team .elementor-widget-the7_elements_carousel.elementor-hidden-tablet.elementor-hidden-mobile .portfolio-carousel-shortcode:not(.owl-loaded) .post-thumbnail img {
+    object-fit: cover;
+}
+
 
 
 
