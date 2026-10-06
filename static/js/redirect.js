@@ -3,7 +3,7 @@
 	'use strict';
 
 	const DEFAULTS = {
-		productionOrigin: 'http://knp-law.co.kr',
+		productionOrigin: 'https://knp-law.co.kr',
 		path: '',
 		allowHosts: ['knp-law.co.kr', 'www.knp-law.co.kr'],
 		localHosts: ['', 'localhost', '127.0.0.1', '[::1]'],

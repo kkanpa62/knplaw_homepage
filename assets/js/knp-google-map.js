@@ -118,7 +118,11 @@
     return;
   }
 
-  if (!document.querySelector('script[data-knp-google-maps]')) {
+  function loadMapsApi() {
+    if (document.querySelector('script[data-knp-google-maps]')) {
+      return;
+    }
+
     var apiKey = window.GOOGLE_MAPS_API_KEY || 'GOOGLE_MAPS_API_KEY';
     if (apiKey === 'GOOGLE_MAPS_API_KEY') {
       console.warn('KNP map: Replace GOOGLE_MAPS_API_KEY with a valid Google Maps API key before deploying.');
@@ -134,4 +138,24 @@
     };
     document.head.appendChild(script);
   }
+
+  // Defer the Maps API until a map is about to scroll into view so it does not compete with initial page load.
+  if (!('IntersectionObserver' in window)) {
+    loadMapsApi();
+    return;
+  }
+
+  var observer = new IntersectionObserver(function (entries) {
+    for (var i = 0; i < entries.length; i++) {
+      if (entries[i].isIntersecting) {
+        observer.disconnect();
+        loadMapsApi();
+        return;
+      }
+    }
+  }, { rootMargin: '600px 0px' });
+
+  mapElements.forEach(function (el) {
+    observer.observe(el);
+  });
 })(window, document);
